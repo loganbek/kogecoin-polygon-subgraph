@@ -25,7 +25,6 @@ import {Approval, OwnershipTransferred, Transfer} from '../generated/Koge/Koge'
 
 export function handleApproval(event:Approval):void {
   
-  
 }
 
 export function handleOwnershipTransferred(event:OwnershipTransferred):void {

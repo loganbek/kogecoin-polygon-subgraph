@@ -1,6 +1,11 @@
-type Gravatar @entity {
-  id: ID!
-  owner: Bytes!
-  displayName: String!
-  imageUrl: String!
-}
+# type Gravatar @entity {
+#   id: ID!
+#   owner: Bytes!
+#   displayName: String!
+#   imageUrl: String!
+# }
+
+# type KogeCoinAddress @entity {
+#   address = String!
+# }
+

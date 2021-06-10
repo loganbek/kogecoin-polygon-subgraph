@@ -1,6 +1,20 @@
-type Gravatar @entity {
+# enum TokenStatus {
+#   OriginalOwner
+#   SecondOwner
+#   ThirdOwner
+# }
+
+type Token @entity {
   id: ID!
-  owner: Bytes!
-  displayName: String!
-  imageUrl: String!
+  name: String!
+  symbol: String!
+  decimals: Int!
+  # tokenStatus: TokenStatus!
+  tokenBalances: [TokenBalance!]! @derivedFrom(field: "token")
+}
+
+type TokenBalance @entity {
+  id: ID!
+  amount: Int!
+  token: Token!
 }

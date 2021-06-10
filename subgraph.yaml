@@ -2,7 +2,7 @@ specVersion: 0.0.2
 description: KogeCoin for Polygon
 repository: https://github.com/loganbek/kogecoin-polygon-subgraph
 schema:
-  file: ./schema.graphql
+  file: ./schema.graphql #subgraph data def
 dataSources:
   - kind: ethereum/contract
     name: Koge
@@ -15,10 +15,10 @@ dataSources:
       apiVersion: 0.0.4
       language: wasm/assemblyscript
       entities:
-        - Gravatar
+        - Koge
       abis:
         - name: Koge
-          file: ./abis/KogeCoin.json
+          file: ./abis/Koge.json
       eventHandlers:
         # - event: NewGravatar(uint256,address,string,string)
         #   handler: handleNewGravatar
@@ -29,4 +29,4 @@ dataSources:
         - event: OwnershipTransferred(address,address)
           handler: handleOwnershipTransferred()
         - event: Transfer(address,address,unit256)
-      file: ./src/mapping.ts
+      file: ./src/mapping.ts #events -> entities

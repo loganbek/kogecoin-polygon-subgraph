@@ -9,3 +9,23 @@
 #   address = String!
 # }
 
+# enum TokenStatus {
+#   OriginalOwner
+#   SecondOwner
+#   ThirdOwner
+# }
+
+type Token @entity {
+  id: ID!
+  name: String!
+  symbol: String!
+  decimals: Int!
+  # tokenStatus: TokenStatus!
+  tokenBalances: [TokenBalance!]! @derivedFrom(field: "token")
+}
+
+type TokenBalance @entity {
+  id: ID!
+  amount: Int!
+  token: Token!
+}

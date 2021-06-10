@@ -1,7 +1,7 @@
-import { NewGravatar, UpdatedGravatar } from '../generated/Gravity/Gravity'
-import { Gravatar } from '../generated/schema'
+// import { NewGravatar, UpdatedGravatar } from '../generated/Gravity/Gravity'
+// import { Transaction, Token, TokenBalance } from '../generated/schema'
 
-import {Approval, OwnershipTransferred, Transfer} from '../generated/Koge/Koge'
+import {Approval, OwnershipTransferred, Transfer, balanceOf} from '../generated/Koge/Koge'
 
 // export function handleNewGravatar(event: NewGravatar): void {
 //   let gravatar = new Gravatar(event.params.id.toHex())
@@ -34,3 +34,7 @@ export function handleOwnershipTransferred(event:OwnershipTransferred):void {
 export function handleTransfer(event:Transfer):void {
 
 }
+
+// export function handleBalanceOf(call:balanceOf):void {
+//     console.log(call.address)
+// }

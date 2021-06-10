@@ -17,6 +17,7 @@ dataSources:
       language: wasm/assemblyscript
       entities:
         - Token
+        - Transaction
       abis:
         - name: Koge
           file: ./abis/Koge.json
@@ -25,10 +26,28 @@ dataSources:
         #   handler: handleNewGravatar
         # - event: UpdatedGravatar(uint256,address,string,string)
         #   handler: handleUpdatedGravatar
-        - event: Approval(address,address,unit256)
+        - event: Approval(indexed address,indexed address,unit256)
           handler: handleApproval()
-        - event: OwnershipTransferred(address,address)
+        - event: OwnershipTransferred(indexed address,indexed address)
           handler: handleOwnershipTransferred()
-        - event: Transfer(address,address,unit256)
-        - handler: handleTransfer()
+        - event: Transfer(indexed address,indexed address,unit256)
+          handler: handleTransfer()
+      # callHandlers:
+  #  Call function with signature 'balanceOf(address)' not present in ABI 'Koge'.
+  # Available call functions:
+  # - approve(address,uint256)
+  # - decreaseAllowance(address,uint256)
+  # - excludeAccount(address)
+  # - includeAccount(address)
+  # - increaseAllowance(address,uint256)
+  # - reflect(uint256)
+  # - renounceOwnership()
+  # - setFeeFrac(uint8)
+  # - transfer(address,uint256)
+  # - transferFrom(address,address,uint256)
+  # - transferOwnership(address)
+        # - function: balanceOf(address)
+        #   handler: handleBalanceOf()
       file: ./src/mapping.ts #events -> entities
+features:
+  - nonFatalErrors

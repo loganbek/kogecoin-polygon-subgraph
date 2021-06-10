@@ -1,14 +1,14 @@
 {
-  "name": "polygon-subgraph",
+  "name": "kogecoin-polygon-subgraph",
   "version": "0.1.0",
   "scripts": {
-    "build-contract": "solc contracts/Gravity.sol --abi -o abis --overwrite && solc contracts/Gravity.sol --bin -o bin --overwrite",
-    "create": "graph create loganbek/polygon-subgraph --node https://api.thegraph.com/deploy/",
-    "create-local": "graph create loganbek/polygon-subgraph --node http://127.0.0.1:8020",
+    "build-contract": "solc contracts/Koge.sol --abi -o abis --overwrite && solc contracts/Koge.sol --bin -o bin --overwrite",
+    "create": "graph create loganbek/kogecoin-polygon-subgraph --node https://api.thegraph.com/deploy/",
+    "create-local": "graph create loganbek/kogecoin-polygon-subgraph --node http://127.0.0.1:8020",
     "codegen": "graph codegen",
     "build": "graph build",
-    "deploy": "graph deploy loganbek/polygon-subgraph --ipfs https://api.thegraph.com/ipfs/ --node https://api.thegraph.com/deploy/",
-    "deploy-local": "graph deploy loganbek/polygon-subgraph --ipfs http://localhost:5001 --node http://127.0.0.1:8020"
+    "deploy": "graph deploy loganbek/kogecoin-polygon-subgraph --ipfs https://api.thegraph.com/ipfs/ --node https://api.thegraph.com/deploy/",
+    "deploy-local": "graph deploy loganbek/kogecoin-polygon-subgraph --ipfs http://localhost:5001 --node http://127.0.0.1:8020"
   },
   "devDependencies": {
     "@graphprotocol/graph-cli": "^0.20.0",

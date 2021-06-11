@@ -1,27 +1,37 @@
 specVersion: 0.0.2
-description: Gravatar for Ethereum
-repository: https://github.com/graphprotocol/example-subgraph
+description: KogeCoin for Polygon
+repository: https://github.com/loganbek/kogecoin-polygon-subgraph
 schema:
   file: schema.graphql
 dataSources:
   - kind: ethereum/contract
-    name: Gravity
-    network: mainnet
+    name: Koge
+    network: matic
     source:
-      address: "0x2E645469f354BB4F5c8a05B3b30A929361cf77eC"
-      abi: Gravity
+      address: "0x13748d548d95d78a3c83fe3f32604b4796cffa23"
+      abi: Koge
+      startBlock: 14177346
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.4
       language: wasm/assemblyscript
       entities:
-        - Gravatar
+        - Token
+        - TokenBalance
+        - Transaction
       abis:
-        - name: Gravity
-          file: Gravity/abis/Gravity.json
+        - name: Koge
+          file: Koge/abis/Koge.json
       eventHandlers:
-        - event: NewGravatar(uint256,address,string,string)
-          handler: handleNewGravatar
-        - event: UpdatedGravatar(uint256,address,string,string)
-          handler: handleUpdatedGravatar
-      file: Gravity/Gravity.wasm
+        - event: Approval(indexed address,indexed address,uint256)
+          handler: handleApproval
+        - event: OwnershipTransferred(indexed address,indexed address)
+          handler: handleOwnershipTransferred
+        - event: Transfer(indexed address,indexed address,uint256)
+          handler: handleTransfer
+      callHandlers:
+        - function: transferFrom(address,address,uint256)
+          handler: handleTransferFrom
+      file: Koge/Koge.wasm
+features:
+  - nonFatalErrors

@@ -40,7 +40,7 @@
 // import { NewGravatar, UpdatedGravatar } from '../generated/Gravity/Gravity'
 // import { Transaction, Token, TokenBalance } from '../generated/schema'
 
-import { Approval, OwnershipTransferred} from '../generated/Koge/Koge'
+import { Approval, OwnershipTransferred, TransferFromCall} from '../generated/Koge/Koge'
 import { Transfer as TransferEvent } from '../generated/Koge/Koge'
 // import { ERC20Contract } from "../generated/schema"
 import { log } from '@graphprotocol/graph-ts'
@@ -90,14 +90,14 @@ export function handleTransfer(event: TransferEvent): void {
     let transfer = new Transfer(id)
     transfer.from = event.params.from
     transfer.to = event.params.to
-    transfer.amount = event.params.value
+    transfer.value = event.params.value
 
-    log.info('Tranfer values - {}, {}, {}, {}', [id, (transfer.from).toString(), (transfer).toString(), (transfer.amount).toString()])
+    log.info('Tranfer values - {}, {}, {}, {}', [id, (transfer.from).toString(), (transfer.to).toString(), (transfer.value).toString()])
 
     transfer.save()
 }
 
-export function handleTransferFrom(call: TransferFrom): void {
+export function handleTransferFrom(call: TransferFromCall): void {
 
 }
 

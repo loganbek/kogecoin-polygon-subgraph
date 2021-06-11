@@ -1,20 +1,3 @@
-# type Gravatar @entity {
-#   id: ID!
-#   owner: Bytes!
-#   displayName: String!
-#   imageUrl: String!
-# }
-
-# type KogeCoinAddress @entity {
-#   address = String!
-# }
-
-# enum TokenStatus {
-#   OriginalOwner
-#   SecondOwner
-#   ThirdOwner
-# }
-
 # enum TokenStatus {
 #   OriginalOwner
 #   SecondOwner
@@ -25,7 +8,7 @@ type Transfer @entity {
   id: ID!
   from: Bytes!
   to: Bytes!
-  amount: BigInt!
+  value: BigInt!
 }
 
 type Token @entity {

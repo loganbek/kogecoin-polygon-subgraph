@@ -60,13 +60,13 @@ export class Transfer extends Entity {
     this.set("to", Value.fromBytes(value));
   }
 
-  get amount(): BigInt {
-    let value = this.get("amount");
+  get value(): BigInt {
+    let value = this.get("value");
     return value.toBigInt();
   }
 
-  set amount(value: BigInt) {
-    this.set("amount", Value.fromBigInt(value));
+  set value(value: BigInt) {
+    this.set("value", Value.fromBigInt(value));
   }
 }
 

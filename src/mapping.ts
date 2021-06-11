@@ -40,11 +40,11 @@
 // import { NewGravatar, UpdatedGravatar } from '../generated/Gravity/Gravity'
 // import { Transaction, Token, TokenBalance } from '../generated/schema'
 
-import { Approval, OwnershipTransferred, TransferFrom } from '../generated/Koge/Koge'
+import { Approval, OwnershipTransferred} from '../generated/Koge/Koge'
 import { Transfer as TransferEvent } from '../generated/Koge/Koge'
-import { ERC20Contract } from "../generated/schema"
+// import { ERC20Contract } from "../generated/schema"
 import { log } from '@graphprotocol/graph-ts'
-import { Address, BigInt, ethereum, store } from "@graphprotocol/graph-ts";
+// import { Address, BigInt, ethereum, store } from "@graphprotocol/graph-ts";
 import { Transfer } from '../generated/schema'
 
 // let tupleArray: Array<ethereum.Value> = [
@@ -71,9 +71,9 @@ export function handleOwnershipTransferred(event: OwnershipTransferred): void {
 //Handles new and already existing Transfer entities
 export function handleTransfer(event: TransferEvent): void {
 
-    log.debug('DataSource Values (address), (network), (context): { }, { }, { } ', [event.dataSource.address(),
-    event.dataSource.network(),
-    event.dataSource.context()])
+    // log.debug('DataSource Values (address), (network), (context): { }, { }, { } ', [event.dataSource.address(),
+    // event.dataSource.network(),
+    // event.dataSource.context()])
 
 
     log.debug('Block number: {}, block hash: {}, transaction hash: {}', [
@@ -82,17 +82,17 @@ export function handleTransfer(event: TransferEvent): void {
         event.transaction.hash.toHexString(), // "0x..."
     ])
 
-    let erc20Symbol = ERC20Contract.bind(event.from).symbol()
-    log.info('ERC20Symbol = {}', [erc20Symbol])
+    // let erc20Symbol = ERC20Contract.bind(event.from).symbol()
+    // log.info('ERC20Symbol = {}', [erc20Symbol])
     // Create a Transfer entity, using the hexadecimal string representation
     // of the transaction hash as the entity ID
     let id = event.transaction.hash.toHex()
     let transfer = new Transfer(id)
     transfer.from = event.params.from
     transfer.to = event.params.to
-    transfer.amount = event.params.amount
+    transfer.amount = event.params.value
 
-    log.info('Tranfer values - {}, {}, {}, {}', [id, transfer.from, transfer.to, transfer.amount])
+    log.info('Tranfer values - {}, {}, {}, {}', [id, (transfer.from).toString(), (transfer).toString(), (transfer.amount).toString()])
 
     transfer.save()
 }

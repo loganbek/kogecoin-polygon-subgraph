@@ -17,6 +17,7 @@ dataSources:
       language: wasm/assemblyscript
       entities:
         - Token
+        - TokenBalance
         - Transaction
       abis:
         - name: Koge
@@ -33,10 +34,10 @@ dataSources:
         - event: Transfer(indexed address,indexed address,unit256)
           handler: handleTransfer()
       callHandlers:
-        - function: transfer(address,uint256)
-          handler: 
+        # - function: transfer(address,uint256)
+        #   handler: 
         - function: transferFrom(address,address,uint256)
-          handler:
+          handler: handleTransferFrom()
   #  Call function with signature 'balanceOf(address)' not present in ABI 'Koge'.
   # Available call functions:
   # - approve(address,uint256)

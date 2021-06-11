@@ -4,6 +4,12 @@
 #   ThirdOwner
 # }
 
+type Transfer @entity {
+  from: Bytes!
+  to: Bytes!
+  amount: BigInt!
+}
+
 type Token @entity {
   id: ID!
   name: String!

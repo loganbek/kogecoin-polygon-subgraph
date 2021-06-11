@@ -1,4 +1,5 @@
 const GravatarRegistry = artifacts.require('./GravatarRegistry.sol')
+const Koge = artifacts.require('./Koge.sol')
 
 module.exports = async function(deployer) {
   const registry = await GravatarRegistry.deployed()

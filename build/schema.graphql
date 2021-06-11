@@ -15,6 +15,19 @@
 #   ThirdOwner
 # }
 
+# enum TokenStatus {
+#   OriginalOwner
+#   SecondOwner
+#   ThirdOwner
+# }
+
+type Transfer @entity {
+  id: ID!
+  from: Bytes!
+  to: Bytes!
+  amount: BigInt!
+}
+
 type Token @entity {
   id: ID!
   name: String!

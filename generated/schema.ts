@@ -12,7 +12,7 @@ import {
   BigDecimal
 } from "@graphprotocol/graph-ts";
 
-export class Gravatar extends Entity {
+export class Transfer extends Entity {
   constructor(id: string) {
     super();
     this.set("id", Value.fromString(id));
@@ -20,17 +20,17 @@ export class Gravatar extends Entity {
 
   save(): void {
     let id = this.get("id");
-    assert(id !== null, "Cannot save Gravatar entity without an ID");
+    assert(id !== null, "Cannot save Transfer entity without an ID");
     assert(
       id.kind == ValueKind.STRING,
-      "Cannot save Gravatar entity with non-string ID. " +
+      "Cannot save Transfer entity with non-string ID. " +
         'Considering using .toHex() to convert the "id" to a string.'
     );
-    store.set("Gravatar", id.toString(), this);
+    store.set("Transfer", id.toString(), this);
   }
 
-  static load(id: string): Gravatar | null {
-    return store.get("Gravatar", id) as Gravatar | null;
+  static load(id: string): Transfer | null {
+    return store.get("Transfer", id) as Transfer | null;
   }
 
   get id(): string {
@@ -42,30 +42,146 @@ export class Gravatar extends Entity {
     this.set("id", Value.fromString(value));
   }
 
-  get owner(): Bytes {
-    let value = this.get("owner");
+  get from(): Bytes {
+    let value = this.get("from");
     return value.toBytes();
   }
 
-  set owner(value: Bytes) {
-    this.set("owner", Value.fromBytes(value));
+  set from(value: Bytes) {
+    this.set("from", Value.fromBytes(value));
   }
 
-  get displayName(): string {
-    let value = this.get("displayName");
+  get to(): Bytes {
+    let value = this.get("to");
+    return value.toBytes();
+  }
+
+  set to(value: Bytes) {
+    this.set("to", Value.fromBytes(value));
+  }
+
+  get amount(): BigInt {
+    let value = this.get("amount");
+    return value.toBigInt();
+  }
+
+  set amount(value: BigInt) {
+    this.set("amount", Value.fromBigInt(value));
+  }
+}
+
+export class Token extends Entity {
+  constructor(id: string) {
+    super();
+    this.set("id", Value.fromString(id));
+  }
+
+  save(): void {
+    let id = this.get("id");
+    assert(id !== null, "Cannot save Token entity without an ID");
+    assert(
+      id.kind == ValueKind.STRING,
+      "Cannot save Token entity with non-string ID. " +
+        'Considering using .toHex() to convert the "id" to a string.'
+    );
+    store.set("Token", id.toString(), this);
+  }
+
+  static load(id: string): Token | null {
+    return store.get("Token", id) as Token | null;
+  }
+
+  get id(): string {
+    let value = this.get("id");
     return value.toString();
   }
 
-  set displayName(value: string) {
-    this.set("displayName", Value.fromString(value));
+  set id(value: string) {
+    this.set("id", Value.fromString(value));
   }
 
-  get imageUrl(): string {
-    let value = this.get("imageUrl");
+  get name(): string {
+    let value = this.get("name");
     return value.toString();
   }
 
-  set imageUrl(value: string) {
-    this.set("imageUrl", Value.fromString(value));
+  set name(value: string) {
+    this.set("name", Value.fromString(value));
+  }
+
+  get symbol(): string {
+    let value = this.get("symbol");
+    return value.toString();
+  }
+
+  set symbol(value: string) {
+    this.set("symbol", Value.fromString(value));
+  }
+
+  get decimals(): i32 {
+    let value = this.get("decimals");
+    return value.toI32();
+  }
+
+  set decimals(value: i32) {
+    this.set("decimals", Value.fromI32(value));
+  }
+
+  get tokenBalances(): Array<string> {
+    let value = this.get("tokenBalances");
+    return value.toStringArray();
+  }
+
+  set tokenBalances(value: Array<string>) {
+    this.set("tokenBalances", Value.fromStringArray(value));
+  }
+}
+
+export class TokenBalance extends Entity {
+  constructor(id: string) {
+    super();
+    this.set("id", Value.fromString(id));
+  }
+
+  save(): void {
+    let id = this.get("id");
+    assert(id !== null, "Cannot save TokenBalance entity without an ID");
+    assert(
+      id.kind == ValueKind.STRING,
+      "Cannot save TokenBalance entity with non-string ID. " +
+        'Considering using .toHex() to convert the "id" to a string.'
+    );
+    store.set("TokenBalance", id.toString(), this);
+  }
+
+  static load(id: string): TokenBalance | null {
+    return store.get("TokenBalance", id) as TokenBalance | null;
+  }
+
+  get id(): string {
+    let value = this.get("id");
+    return value.toString();
+  }
+
+  set id(value: string) {
+    this.set("id", Value.fromString(value));
+  }
+
+  get amount(): i32 {
+    let value = this.get("amount");
+    return value.toI32();
+  }
+
+  set amount(value: i32) {
+    this.set("amount", Value.fromI32(value));
+  }
+
+  get token(): string {
+    let value = this.get("token");
+    return value.toString();
+  }
+
+  set token(value: string) {
+    this.set("token", Value.fromString(value));
   }
 }

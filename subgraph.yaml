@@ -22,22 +22,22 @@ dataSources:
       abis:
         - name: Koge
           file: ./abis/Koge.json
-      eventHandlers:
+      # eventHandlers:
         # - event: NewGravatar(uint256,address,string,string)
         #   handler: handleNewGravatar
         # - event: UpdatedGravatar(uint256,address,string,string)
         #   handler: handleUpdatedGravatar
-        - event: Approval(indexed address,indexed address,uint256)
-          handler: handleApproval
-        - event: OwnershipTransferred(indexed address,indexed address)
-          handler: handleOwnershipTransferred
-        - event: Transfer(indexed address,indexed address,uint256)
-          handler: handleTransfer
-      callHandlers:
-        # - function: transfer(address,uint256)
-        #   handler: 
-        - function: transferFrom(address,address,uint256)
-          handler: handleTransferFrom
+      #   - event: Approval(indexed address,indexed address,uint256)
+      #     handler: handleApproval
+      #   - event: OwnershipTransferred(indexed address,indexed address)
+      #     handler: handleOwnershipTransferred
+      #   - event: Transfer(indexed address,indexed address,uint256)
+      #     handler: handleTransfer
+      # callHandlers:
+      #   # - function: transfer(address,uint256)
+      #   #   handler: 
+      #   - function: transferFrom(address,address,uint256)
+      #     handler: handleTransferFrom
   #  Call function with signature 'balanceOf(address)' not present in ABI 'Koge'.
   # Available call functions:
   # - approve(address,uint256)

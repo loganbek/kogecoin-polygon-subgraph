@@ -25,3 +25,11 @@ type TokenBalance @entity {
   amount: Int!
   token: Token!
 }
+
+type UserInfo @entity {
+  id: ID!
+  balance: TokenBalance!
+   
+  }
+  
+}

@@ -4,12 +4,12 @@
 #   ThirdOwner
 # }
 
-type Transfer @entity {
-  id: ID!
-  from: Bytes!
-  to: Bytes!
-  value: BigInt!
-}
+# type Transfer @entity {
+#   id: ID!
+#   from: Bytes!
+#   to: Bytes!
+#   value: BigInt!
+# }
 
 type Token @entity {
   id: ID!
@@ -30,6 +30,4 @@ type UserInfo @entity {
   id: ID!
   balance: TokenBalance!
    
-  }
-  
 }

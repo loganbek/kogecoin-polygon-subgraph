@@ -3,88 +3,85 @@ description: KogeCoin for Polygon
 repository: https://github.com/loganbek/kogecoin-polygon-subgraph
 schema:
   file: ./schema.graphql #subgraph data def
-  dataSources:
-    - kind: ethereum/contract
-      name: KogeCoinFarms
-      network: matic
-      source:
-        address: '0x6275518a63e891b1bC54FEEBBb5333776E32fAbD'
-        abi: KogeCoinFarms
-        startBlock: 15509293
-      mapping:
-        kind: ethereum/events
-        apiVersion: 0.0.4
-        language: wasm/assemblyscript
-        entities: 
-          - UserToken
-          - UserTokenBalance
-          - UserInfo
-        abis:
-          - name: KogeCoinFarms
-            file: ./abis/KogeCoinFarms.json
-        eventHandlers:
-          - event: UserInfo(address)
-            handler: handleUserInfo
-          - event: UserToken(address)
-            handler: handleUserToken
-        callHandlers:
-          - function: getBalance(address,uint256)
-            handler: handleGetBalance
-        file: ./src/mapping.ts #events -> entities
-        features:
-          - nonFatalErrors
-            # dataSources:
-#   - kind: ethereum/contract
-#     name: Koge
-#     network: matic
-#     source:
-#       address: '0x13748d548d95d78a3c83fe3f32604b4796cffa23'
-#       abi: Koge
-#       startBlock: 14177346
-#     # https://polygonscan.com/address/0x6275518a63e891b1bC54FEEBBb5333776E32fAbD
-#     # source:
-#     #   address: ''
-#     #   abi:
-#     #   startBlock: 
-#     mapping:
-#       kind: ethereum/events
-#       apiVersion: 0.0.4
-#       language: wasm/assemblyscript
-#       entities:
-#         - Token
-#         - TokenBalance
-#         - Transaction
-#       abis:
-#         - name: Koge
-#           file: ./abis/Koge.json
-      # eventHandlers:
-        # - event: NewGravatar(uint256,address,string,string)
-        #   handler: handleNewGravatar
-        # - event: UpdatedGravatar(uint256,address,string,string)
-        #   handler: handleUpdatedGravatar
-      #   - event: Approval(indexed address,indexed address,uint256)
-      #     handler: handleApproval
-      #   - event: OwnershipTransferred(indexed address,indexed address)
-      #     handler: handleOwnershipTransferred
-      #   - event: Transfer(indexed address,indexed address,uint256)
-      #     handler: handleTransfer
-      # callHandlers:
-      #   # - function: transfer(address,uint256)
-      #   #   handler: 
-      #   - function: transferFrom(address,address,uint256)
-      #     handler: handleTransferFrom
-  #  Call function with signature 'balanceOf(address)' not present in ABI 'Koge'.
-  # Available call functions:
-  # - approve(address,uint256)
-  # - decreaseAllowance(address,uint256)
-  # - excludeAccount(address)
-  # - includeAccount(address)
-  # - increaseAllowance(address,uint256)
-  # - reflect(uint256)
-  # - renounceOwnership()
-  # - setFeeFrac(uint8)
-  # - transfer(address,uint256)
-  # - transferFrom(address,address,uint256)
-  # - transferOwnership(address)
-        # - function: balanceOf(address)
-        #   handler: handleBalanceOf()
+dataSources:
+  - kind: ethereum/contract
+    name: KogeCoinFarms
+    network: matic
+    source:
+      address: "0x6275518a63e891b1bC54FEEBBb5333776E32fAbD"
+      abi: KogeCoinFarms
+      startBlock: 15509293
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.4
+      language: wasm/assemblyscript
+      entities:
+        - UserInfo
+        - TokenBalance
+        - Token
+      abis:
+        - name: KogeCoinFarms
+          file: ./abis/KogeCoinFarms.json
+      callHandlers:
+        - function: UserInfo
+          handler: handleUserInfo
+          # filter:
+          #   kind: user
+      file: ./src/mapping.ts #events -> entities
+              # features:
+              #   - nonFatalErrors
+    # dataSources:
+    #   - kind: ethereum/contract
+    #     name: Koge
+    #     network: matic
+    #     source:
+    #       address: '0x13748d548d95d78a3c83fe3f32604b4796cffa23'
+    #       abi: Koge
+    #       startBlock: 14177346
+    #     # https://polygonscan.com/address/0x6275518a63e891b1bC54FEEBBb5333776E32fAbD
+    #     # source:
+    #     #   address: ''
+    #     #   abi:
+    #     #   startBlock:
+    #     mapping:
+    #       kind: ethereum/events
+    #       apiVersion: 0.0.4
+    #       language: wasm/assemblyscript
+    #       entities:
+    #         - Token
+    #         - TokenBalance
+    #         - Transaction
+    #       abis:
+    #         - name: Koge
+    #           file: ./abis/Koge.json
+    # eventHandlers:
+    # - event: NewGravatar(uint256,address,string,string)
+    #   handler: handleNewGravatar
+    # - event: UpdatedGravatar(uint256,address,string,string)
+    #   handler: handleUpdatedGravatar
+    #   - event: Approval(indexed address,indexed address,uint256)
+    #     handler: handleApproval
+    #   - event: OwnershipTransferred(indexed address,indexed address)
+    #     handler: handleOwnershipTransferred
+    #   - event: Transfer(indexed address,indexed address,uint256)
+    #     handler: handleTransfer
+    # callHandlers:
+    #   # - function: transfer(address,uint256)
+    #   #   handler:
+    #   - function: transferFrom(address,address,uint256)
+    #     handler: handleTransferFrom
+    #  Call function with signature 'balanceOf(address)' not present in ABI 'Koge'.
+    # Available call functions:
+    # - approve(address,uint256)
+    # - decreaseAllowance(address,uint256)
+    # - excludeAccount(address)
+    # - includeAccount(address)
+    # - increaseAllowance(address,uint256)
+    # - reflect(uint256)
+    # - renounceOwnership()
+    # - setFeeFrac(uint8)
+    # - transfer(address,uint256)
+    # - transferFrom(address,address,uint256)
+    # - transferOwnership(address)
+    # - function: balanceOf(address)
+    #   handler: handleBalanceOf()
